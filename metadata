@@ -1,0 +1,49 @@
+<?php 
+/*
+Plugin Name: Weblandtk Video Widget
+Plugin URI: http://weblandtk.ir
+Description : A Simple plugin to show how to add post metadata to wordpress
+Version : 1.0
+Author : Taghi Khavari
+Author URI: http://weblandtk.ir
+License: GPL2
+*/
+
+//Show metabox in post editing page
+
+add_action('add_meta_box','weblandtk_add_metabox');
+
+function weblandtk_add_metabox(){
+   //doc http://codex.wordpress.org/Function_reference/add_meta_box
+   add_meta_box(
+      'weblandtk_youtube',
+      'You tube Video Link',
+      'weblandtk_youtube_handler',
+      'post'
+      );
+}
+
+// metabox handler
+
+function weblandtk_youtube_handler(){
+    $value = get_post_custom($post->ID);
+    $youtube_link = esc_attr($value['weblandtk_youtube'][0]);
+    echo '<label for="weblandtk_youtube">Youtube Video Link</label><input type="text" id="weblandtk_youtube" name="weblandtk_youtube" value="'.$youtube_link.'"/>'
+}
+
+
+//save metadata
+add_action('save_post','weblandtk_save_metabox');
+
+function weblandtk_save_metabox($post_id){
+    if(!current_user_can('edit_post'){
+      return;
+    }
+    
+    if(isset($_POST['weblandtk_youtube']){
+      update_post_meta($post_ID,'weblandtk_youtube',wc_clean($_POST['weblandtk_youtube']));
+    }
+       
+}
+
+   
