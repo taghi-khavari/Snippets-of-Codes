@@ -46,4 +46,5 @@ function weblandtk_save_metabox($post_id){
        
 }
 
-   
+
+//To Display the code on the front end use this function :> get_post_meta( int $post_id, string $key = '', bool $single = false )
