@@ -6,7 +6,7 @@ function rng_shortcode_SHORTCODENAME( $atts, $content ) {
   ), $atts, 'SHORTCODENAME'
     );
     //USE PARAMS
-    $atts['PARAM'];
+    $array_ atts['PARAM'];
     //USE CONTENT
     $content;
     //RETURN VALUE
