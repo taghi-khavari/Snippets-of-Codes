@@ -1,6 +1,8 @@
 <?php get_header(); ?>
 
 <?php 
+//Creating Custom query if we want to use the metabox on a custom post type page
+
 $args = array(
 	'post_type' => 'your_post',
 );  
