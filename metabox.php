@@ -1,4 +1,17 @@
 add_action( 'add_meta_boxes', 'add_your_fields_meta_box' );
+
+function add_your_fields_meta_box() {
+    add_meta_box(
+        'ariaz_dev_fields_meta_box', // $id
+        'Your Fields', // $title
+        'show_your_fields_meta_box', // $callback
+        'product', // $screen
+        'side', // $context
+        'high' // $priority
+    );
+}
+
+
 function show_your_fields_meta_box() {
     global $post;  
     
