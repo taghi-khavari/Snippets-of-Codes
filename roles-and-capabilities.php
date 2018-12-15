@@ -1,7 +1,7 @@
 <?php
 
 // ** Adding a role **
-function wporg_simple_role()
+function weblandtk_simple_role()
 {
 //add_role( string $role, string $display_name, array $capabilities = array() )
     add_role(
@@ -16,19 +16,19 @@ function wporg_simple_role()
 }
  
 // add the simple_role
-add_action('init', 'wporg_simple_role');
+add_action('init', 'weblandtk_simple_role');
 
 
 
 //** removing a role **
 
-function wporg_simple_role_remove()
+function weblandtk_simple_role_remove()
 {
     remove_role('simple_role');
 }
  
 // remove the simple_role
-add_action('init', 'wporg_simple_role_remove');
+add_action('init', 'weblandtk_simple_role_remove');
 
 
 
@@ -37,7 +37,7 @@ add_action('init', 'wporg_simple_role_remove');
 // see this link for default capabilities
 //https://codex.wordpress.org/Roles_and_Capabilities#Capability_vs._Role_Table
 
-function wporg_simple_role_caps()
+function weblandtk_simple_role_caps()
 {
     // gets the simple_role role object
     $role = get_role('simple_role');
@@ -47,7 +47,7 @@ function wporg_simple_role_caps()
 }
  
 // add simple_role capabilities, priority must be after the initial role definition
-add_action('init', 'wporg_simple_role_caps', 11);
+add_action('init', 'weblandtk_simple_role_caps', 11);
 
 
 // ** Removing Capabilites **
