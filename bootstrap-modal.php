@@ -1,5 +1,5 @@
 <?php
-function my_modal(){
+function weblandtk_modal(){
     ?>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
 
@@ -42,4 +42,4 @@ function my_modal(){
 <?php
 }
 
-add_action('wp_footer','my_modal');
+add_action('wp_footer','weblandtk_modal');
