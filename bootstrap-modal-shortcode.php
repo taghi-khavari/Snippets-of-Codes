@@ -1,7 +1,7 @@
 
 
 
-function rng_shortcode_modal( $atts, $content ) {
+function weblandtk_shortcode_modal( $atts, $content ) {
     //ATTRIBUTE
     $array_atts = shortcode_atts(
         array(
@@ -41,15 +41,8 @@ function rng_shortcode_modal( $atts, $content ) {
     $outpout = ob_get_clean();
     return $outpout;
 }
-add_shortcode( 'modal', 'rng_shortcode_modal' );
+add_shortcode( 'modal', 'weblandtk_shortcode_modal' );
 
 
 
-function ariaz_custom_excerpt(  $output,$count ){
-//    $output = get_the_content();
-    $output = strip_tags($output);
-    $output = mb_substr($output , 0 , $count);
-    $output = mb_substr($output , 0 , mb_strrpos($output, " "));
-    $output .= "...";
-    return $output;
-}
+
