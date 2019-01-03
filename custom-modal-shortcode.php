@@ -139,18 +139,18 @@ function weblandtk_shortcode_modal( $atts, $content = '' ) {
                 modal.css('display','none');
             });
 
+            modal.click(function(event) {
+                var modal_content = $(".weblandtk_modal-content").find("*");
+                var target = $( event.target );
+                if(!target.is(modal_content)){
+                    $(this).hide();
+                }
+            });
 
 
         })(jQuery);
 
-        // When the user clicks anywhere outside of the modal, close it just remember to use it outside jquery
-        var wt_modal = document.getElementsByClassName('weblandtk_modal')[0];
 
-        window.onclick = function(event) {
-            if (event.target == wt_modal) {
-                wt_modal.style.display = "none";
-            }
-        }
     </script>
 
 
