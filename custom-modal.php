@@ -1,12 +1,6 @@
 <?php
 
 
-add_action('wp_enqueue_scripts','weblandtk_enqueue_script');
-
-function weblandtk_enqueue_script(){
-    wp_enqueue_script( 'customjs',get_template_directory_uri().'/attach/js/custom.js',array('jquery'),1.0,true );
-}
-
 
 function weblandtk_shortcode_modal( $atts, $content ) {
     global $post;
