@@ -1,10 +1,10 @@
-add_action( 'add_meta_boxes', 'add_your_fields_meta_box' );
+add_action( 'add_meta_boxes', 'weblandtk_add_your_fields_meta_box' );
 
-function add_your_fields_meta_box() {
+function weblandtk_add_your_fields_meta_box() {
     add_meta_box(
-        'ariaz_dev_fields_meta_box', // $id
+        'weblandtk_fields_meta_box', // $id
         'Your Fields', // $title
-        'show_your_fields_meta_box', // $callback
+        'weblandtk_show_your_fields_meta_box', // $callback
         'product', // $screen
         'side', // $context
         'high' // $priority
@@ -12,10 +12,9 @@ function add_your_fields_meta_box() {
 }
 
 
-function show_your_fields_meta_box() {
+function weblandtk_show_your_fields_meta_box() {
     global $post;  
-    
-		$meta = get_post_meta( $post->ID, 'your_fields', true ); ?>
+    $meta = get_post_meta( $post->ID, 'your_fields', true ); ?>
 
   <input type="hidden" name="your_meta_box_nonce" value="<?php echo wp_create_nonce( basename(__FILE__) ); ?>">
 
