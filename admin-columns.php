@@ -1,3 +1,7 @@
+
+
+
+
 <?php
 /**
  * Plugin name: Editing Admin Column's of the pages
@@ -86,16 +90,16 @@ function weblandtk_realstate_column($column,$post_id){
 //Making Columns Sortable
 
 
-add_filter( 'manage_edit-realestate_sortable_columns', 'smashing_realestate_sortable_columns');
-function smashing_realestate_sortable_columns( $columns ) {
+add_filter( 'manage_edit-realestate_sortable_columns', 'weblandtk_realestate_sortable_columns');
+function weblandtk_realestate_sortable_columns( $columns ) {
     $columns['price'] = 'price_per_month';
     return $columns;
 }
 
 
 
-add_action( 'pre_get_posts', 'smashing_posts_orderby' );
-function smashing_posts_orderby( $query ) {
+add_action( 'pre_get_posts', 'weblandtk_posts_orderby' );
+function weblandtk_posts_orderby( $query ) {
     if( ! is_admin() || ! $query->is_main_query() ) {
         return;
     }
@@ -111,12 +115,12 @@ function smashing_posts_orderby( $query ) {
 
 //3
 
-function wc_new_order_column( $columns )
+function weblandtk_new_order_column( $columns )
 {
     $columns['my_column'] = 'My column';
     return $columns;
 }
-    add_filter( 'manage_edit-shop_order_columns', 'wc_new_order_column' );
+    add_filter( 'manage_edit-shop_order_columns', 'weblandtk_new_order_column' );
 
 //4
 
@@ -127,7 +131,7 @@ function wc_new_order_column( $columns )
  * @param string[] $columns
  * @return string[] $new_columns
  */
-function sv_wc_cogs_add_order_profit_column_header( $columns ) {
+function weblandtk_add_order_profit_column_header( $columns ) {
 
     $new_columns = array();
 
@@ -142,7 +146,7 @@ function sv_wc_cogs_add_order_profit_column_header( $columns ) {
 
     return $new_columns;
 }
-add_filter( 'manage_edit-shop_order_columns', 'sv_wc_cogs_add_order_profit_column_header', 20 );
+add_filter( 'manage_edit-shop_order_columns', 'weblandtk_add_order_profit_column_header', 20 );
 
 
 //Populate new section
@@ -183,7 +187,7 @@ endif;
  *
  * @param string[] $column name of column being displayed
  */
-function sv_wc_cogs_add_order_profit_column_content( $column ) {
+function weblandtk_add_order_profit_column_content( $column ) {
     global $post;
 
     if ( 'order_profit' === $column ) {
@@ -205,17 +209,17 @@ function sv_wc_cogs_add_order_profit_column_content( $column ) {
         echo wc_price( $profit, array( 'currency' => $currency ) );
     }
 }
-add_action( 'manage_shop_order_posts_custom_column', 'sv_wc_cogs_add_order_profit_column_content' );
+add_action( 'manage_shop_order_posts_custom_column', 'weblandtk_add_order_profit_column_content' );
 
 /**
  * Adjusts the styles for the new 'Profit' column.
  */
-function sv_wc_cogs_add_order_profit_column_style() {
+function weblandtk_add_order_profit_column_style() {
 
     $css = '.widefat .column-order_date, .widefat .column-order_profit { width: 9%; }';
     wp_add_inline_style( 'woocommerce_admin_styles', $css );
 }
-add_action( 'admin_print_styles', 'sv_wc_cogs_add_order_profit_column_style' );
+add_action( 'admin_print_styles', 'weblandtk_add_order_profit_column_style' );
 
 
 
