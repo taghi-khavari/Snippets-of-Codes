@@ -185,5 +185,14 @@ function weblandtk_simple_role()
 
 // add the simple_role
 add_action('init', 'weblandtk_simple_role');
+/*
+adding multiple user role to one user
+Yes, WordPress allows this. You can do it in your code:
+
+    $someone = new WP_User( $user_id );
+    $someone->add_role( 'role-1' );
+    $someone->add_role( 'role-2' );
+You can also use a plugin such as Multiple Roles. The plugin will transform the select dropdown into checkboxes.
+*/
 
 
