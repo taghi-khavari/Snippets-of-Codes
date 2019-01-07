@@ -1,5 +1,8 @@
 <?php
-
+/*
+update_option('default_role', YOUR_NEW_DEFAULT_ROLE)
+since you’ll be deleting subscriber which is WP’s default role.
+*/
 // ** Adding a role **
 function weblandtk_simple_role()
 {
@@ -14,7 +17,27 @@ function weblandtk_simple_role()
         ]
     );
 }
- 
+
+//adding custom capabilities to a role
+add_action('admin_init', 'add_custom_cap');
+function add_custom_cap()
+{
+    $custom_cap = 'test_cap';
+    $min_cap    = 'read';
+    $grant      = true;
+    $to_role = 'your_user_role';
+    $role = 'user_role';
+
+    foreach ( $GLOBALS['wp_roles'] as $role_obj )
+    {
+        if (is_object($role_obj[$role])) {
+            if (!$role_obj[$role]->has_cap( $custom_cap ) && $role_obj[$role]->has_cap( $min_cap )) {
+                $role_obj[$role]->add_cap( $custom_cap, $grant );
+            }
+        }
+    }
+}
+
 // add the simple_role
 add_action('init', 'weblandtk_simple_role');
 
