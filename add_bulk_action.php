@@ -13,9 +13,9 @@ function weblandtk_register_bulk_actions($bulk_actions) {
 
 //Handling the form submission
 
-add_filter( 'handle_bulk_actions-edit-post', 'my_bulk_action_handler', 10, 3 );
+add_filter( 'handle_bulk_actions-edit-post', 'weblandtk_bulk_action_handler', 10, 3 );
  
-function my_bulk_action_handler( $redirect_to, $doaction, $post_ids ) {
+function weblandtk_bulk_action_handler( $redirect_to, $doaction, $post_ids ) {
   if ( $doaction !== 'email_to_eric' ) {
     return $redirect_to;
   }
@@ -28,9 +28,9 @@ function my_bulk_action_handler( $redirect_to, $doaction, $post_ids ) {
 
 //Showing notices
 
-add_action( 'admin_notices', 'my_bulk_action_admin_notice' );
+add_action( 'admin_notices', 'weblandtk_bulk_action_admin_notice' );
  
-function my_bulk_action_admin_notice() {
+function weblandtk_bulk_action_admin_notice() {
   if ( ! empty( $_REQUEST['bulk_emailed_posts'] ) ) {
     $emailed_count = intval( $_REQUEST['bulk_emailed_posts'] );
     printf( '<div id="message" class="updated fade">' .
