@@ -87,6 +87,19 @@ function weblandtk_realstate_column($column,$post_id){
 }
 
 
+/*
+manage_posts_columns
+
+[
+  [cb]          => <input type="checkbox" />
+  [title]       => Title
+  [author]      => Author
+  [categories]  => Categories
+  [tags]        => Tags
+  [comments]    => [..] Comments [..]
+  [date]        => Date
+]
+*/
 //Making Columns Sortable
 
 
