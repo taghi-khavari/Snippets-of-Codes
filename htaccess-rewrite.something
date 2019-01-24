@@ -3,3 +3,15 @@ RewriteEngine on
 RewriteCond %{REQUEST_URI} !^/[0-9]+..+.cpaneldcv$
 RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}.txt(?:\ Comodo\ DCV)?$
 RewriteRule ^(.*)$ http://site.com/$1 [R=301,L]
+
+
+//this is for moving wordpress to a sub folder beside this we need index.php to be in the main root
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /fa/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /fa/index.php [L]
+</IfModule>
