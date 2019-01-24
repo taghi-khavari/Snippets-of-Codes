@@ -1,0 +1,5 @@
+//this is for redirect one domain to another
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !^/[0-9]+..+.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^(.*)$ http://site.com/$1 [R=301,L]
