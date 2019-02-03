@@ -105,7 +105,7 @@ function weblandtk_shortcode_modal( $atts, $content = '' ) {
         ), $atts, 'modal'
     );
 
-
+ob_start();
     $idSalt = rng_random_string();
     ?>
     <!-- Trigger/Open The Modal -->
@@ -184,7 +184,7 @@ function weblandtk_shortcode_modal( $atts, $content = '' ) {
 
     <?php
     //RETURN VALUE
-    ob_start();
+    
     $outpout = ob_get_clean();
     return $outpout;
 }
