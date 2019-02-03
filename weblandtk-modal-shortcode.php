@@ -78,6 +78,21 @@
 </style>
 
 
+<?php
+function rng_random_string() {
+    $characters = "QWERTYUIOPQASDFGHJKLZXCVBNM";
+    $characters .= "qwertyuiopasdfghjklzxcvbnm";
+    $characters .= "1234567890";
+    $characters_length = strlen($characters);
+    $random_string = '';
+    for ($i = 0; $i < 7; $i++) {
+        $random_string .= $characters[rand(0, $characters_length - 1)];
+    }
+    return $random_string;
+}
+
+
+
 
 function weblandtk_shortcode_modal( $atts, $content = '' ) {
     //ATTRIBUTE
@@ -90,11 +105,12 @@ function weblandtk_shortcode_modal( $atts, $content = '' ) {
         ), $atts, 'modal'
     );
 
+
+    $idSalt = rng_random_string();
     ?>
-
-
     <!-- Trigger/Open The Modal -->
-    <button class="weblandtk_modal_btn"><?php echo $array_atts['btn']; ?></button>
+    <button class="weblandtk_modal_btn" data-modal="myModal<?php echo $idSalt; ?>"><?php echo $array_atts['btn']; ?></button>
+
     <h2 class="matn " style="color:white"><?php echo $content?></h2>
     <!-- The Modal -->
     <div class="weblandtk_modal" >
@@ -147,6 +163,18 @@ function weblandtk_shortcode_modal( $atts, $content = '' ) {
                 }
             });
 
+            
+                
+            var orderForm = $(".modal .wpcf7");
+            if(orderForm.length)
+            {
+                $(".product-order-name").each(function(i,obj){
+                    var input = $(this);
+                    var productOrderName = input.closest("tr").find("td:nth-child(3)").text();
+                    input.closest(".modal-body").prev(".modal-header").find(".order-title").text(productOrderName);
+                    input.attr("value",productOrderName);
+                });
+            }
 
         })(jQuery);
 
@@ -161,4 +189,6 @@ function weblandtk_shortcode_modal( $atts, $content = '' ) {
     return $outpout;
 }
 add_shortcode( 'modal', 'weblandtk_shortcode_modal' );
+
+
 
