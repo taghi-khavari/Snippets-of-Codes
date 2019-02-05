@@ -27,10 +27,10 @@ add_action('init', 'weblandtk_simple_role_caps', 11);
 
 
 
-function wpcodex_adjust_the_wp_menu() {
+function weblandtk_adjust_the_wp_menu() {
    $page = remove_submenu_page( 'index.php', 'update-core.php' );
    // $page[0] is the menu title
    // $page[1] is the minimum level or capability required
    // $page[2] is the URL to the item's file
 }
-add_action( 'admin_menu', 'wpcodex_adjust_the_wp_menu', 999 );
+add_action( 'admin_menu', 'weblandtk_adjust_the_wp_menu', 999 );
