@@ -1,8 +1,8 @@
 <?php
-  if(!class_exists("rng_product_view")){ 
-    class rng_product_view {
-
-      function __construct() {
+ if(!class_exists("rng_product_view")){ 
+  class rng_product_view {
+    
+    function __construct() {
         add_shortcode( 'product_viewed', array($this,'shortcode_product_viewed') );
         add_action("template_redirect", array($this, "set_product_view"));
         add_action('add_meta_boxes', array($this,'metabox_init'));
@@ -10,7 +10,7 @@
         add_action('wp_footer', array($this,'recent_post_viewed'));
       }
       function set_product_view() {
-        if (is_page() and ! is_admin()) {
+        if (is_single() and ! is_admin() and ('product' == get_post_type())) {
           global $post;
           $post_id = $post->ID;
           $post_type = $post->post_type;
@@ -19,7 +19,7 @@
             'post_type' => $post_type
           );
           $is_legal_post_views = $this->is_legal_post_views($args);
-          if ($is_legal_post_views and ! current_user_can("edit_posts")) {
+          if ($is_legal_post_views ) {
             $cookie_name = 'uc_product_view';
             $this->update_post_views($post_id, $cookie_name);
           }
@@ -27,7 +27,7 @@
       }
 
       function is_legal_post_views($args) {
-        if ($args['post_type'] == "page") {
+        if ($args['post_type'] == "product") {
           $meta_key = get_post_meta($args['post_id'], 'rng_is_product', TRUE);
           if ($meta_key == "on") {
             return TRUE;
@@ -69,7 +69,7 @@
         setcookie($cookie_name, '', time() - 3600, '/');
       }
       function metabox_init() {
-        add_meta_box("rng-page-product", "محتوای محصول", array($this,"metabox_input"), array("page") , "side" , "high" );
+        add_meta_box("rng-page-product", "فعالسازی بازدید اخیر", array($this,"metabox_input"), array("product") , "side" , "high" );
       }
       function metabox_input($post) {
         wp_nonce_field(basename(__FILE__), 'rng_nonce');
@@ -83,7 +83,9 @@
         $is_autosave = wp_is_post_autosave($post_id);
         $is_revision = wp_is_post_revision($post_id);
         $is_valid_nonce = (isset($_POST['rng_nonce']) && wp_verify_nonce($_POST['rng_nonce'], basename(__FILE__))) ? TRUE : FALSE;
-        if ($is_autosave || $is_revision || !$is_valid_nonce) {
+        //TODO: CHECK HERE IMPORTANT*****
+        //if ($is_autosave || $is_revision || !$is_valid_nonce) {
+        if ( !$is_valid_nonce) {
           return;
         } else {
           update_post_meta( $post_id, "rng_is_product", $_POST['rng_is_product'] );
@@ -105,7 +107,7 @@
           }
         }
         if(isset($product_view) and count($product_view) !== 0){
-          $args = array('post__in' => $product_view,'post_type' => 'page','posts_per_page' => 10);
+          $args = array('post__in' => $product_view,'post_type' => 'product','posts_per_page' => 10);
           $posts = get_posts($args);
           if(is_array($posts)){
             echo '<ul class="rng-product-viewed">';
@@ -141,7 +143,7 @@
             }
           }
           if(isset($product_view) and count($product_view) !== 0){
-            $args = array('post__in' => $product_view,'post_type' => 'page','posts_per_page' => 10);
+            $args = array('post__in' => $product_view,'post_type' => 'product','posts_per_page' => 10);
             $posts = get_posts($args);
             if(is_array($posts)){
               echo '<ul class="rng-product-viewed">';
@@ -163,6 +165,5 @@
       }
     }
   }
-
 
   new rng_product_view();
