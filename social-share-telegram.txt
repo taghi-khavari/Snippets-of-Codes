@@ -1,0 +1,4 @@
+		for share on telegram U can use this link
+    window.open('https://t.me/share/url?url=' + windowLocation +'&text='+$pageTitle, "pinterestWindow", "height=640,width=660,resizable=0,toolbar=0,menubar=0,status=0,location=0,scrollbars=0" ) 
+    
+    and if You want to share on other social media read this link :https://github.com/bradvin/social-share-urls
