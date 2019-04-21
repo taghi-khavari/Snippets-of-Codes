@@ -70,3 +70,18 @@ add_filter('login_headerurl','change_login_logo_url');
 add_filter('login_headertitle','change_login_logo_url_title');
 
 
+
+//redirect subscribers to home page after login
+
+
+function redirect_login_url(){
+    $currentUser = wp_get_current_user();
+    
+    //redirect if the user role is subscriber
+    if(count($currentUser->roles) == 1 && $currentUser->roles[0] == 'subscriber'){
+        return home_url();    
+    }
+    
+}
+
+add_action('admin_init','redirect_login_url');
