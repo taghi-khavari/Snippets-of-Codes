@@ -1,4 +1,4 @@
-function rng_shortcode_SHORTCODENAME( $atts, $content ) {
+function weblandtk_shortcode_SHORTCODENAME( $atts, $content ) {
     //ATTRIBUTE
   $array_atts = shortcode_atts(
   array(
