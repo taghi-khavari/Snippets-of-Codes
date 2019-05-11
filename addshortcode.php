@@ -14,4 +14,4 @@ function weblandtk_shortcode_SHORTCODENAME( $atts, $content ) {
     $outpout = ob_get_clean();
   return $outpout;
 }
-add_shortcode( 'SHORTCODENAME', 'rng_shortcode_SHORTCODENAME' );
+add_shortcode( 'SHORTCODENAME', 'weblandtk_shortcode_SHORTCODENAME' );
