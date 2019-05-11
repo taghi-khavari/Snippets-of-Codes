@@ -6,7 +6,7 @@ function weblandtk_shortcode_SHORTCODENAME( $atts, $content ) {
   ), $atts, 'SHORTCODENAME'
     );
     //USE PARAMS
-    $array_ atts['PARAM'];
+    $array_atts['PARAM'];
     //USE CONTENT
     $content;
     //RETURN VALUE
