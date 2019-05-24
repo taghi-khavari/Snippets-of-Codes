@@ -10,6 +10,9 @@ function weblandtk_remove_menu_pages() {
   remove_menu_page( 'users.php' );                  //Users
   remove_menu_page( 'tools.php' );                  //Tools
   remove_menu_page( 'options-general.php' );        //Settings
+  remove_menu_page('persian-wc');
+  remove_menu_page('vc-general');
+
   
    remove_submenu_page( 'options-general.php','options-media.php' );
    remove_submenu_page( 'options-general.php','options-discussion.php' );
