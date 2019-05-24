@@ -30,3 +30,14 @@ function wpcodex_adjust_the_wp_menu() {
    // $page[2] is the URL to the item's file
 }
 add_action( 'admin_menu', 'wpcodex_adjust_the_wp_menu', 999 );
+
+//You need to find out the parent menu slug, used when added the submenu:
+//add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
+
+//Then use this in your functions.php replacing accordingly:
+
+// Remove submenus
+function remove_submenu() {
+        remove_submenu_page( '$parent_slug', '$menu_slug' );
+}
+add_action( 'admin_menu', 'remove_submenu', 999 );
