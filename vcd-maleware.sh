@@ -19,3 +19,4 @@ rm -i -r $link
 ################# FIND MALEVAREE #################
 grep -R --include=*.php "class.plugin-modules.php"
 grep -R --include=*.php "class.theme-modules.php"
+grep -R --include=*.php "wp_vcd.php"
