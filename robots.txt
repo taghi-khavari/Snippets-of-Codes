@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+http://www.ghasremosaic.com/fa/sitemap_index.xml
