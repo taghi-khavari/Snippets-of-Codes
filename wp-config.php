@@ -13,3 +13,5 @@ if ( WP_DEBUG ) {
 }
 
 define('DISALLOW_FILE_EDIT',TRUE);
+
+define('WP_POST_REVISIONS', 3);
