@@ -36,7 +36,7 @@ function vc_before_init_actions() {
 			vc_map( 
 				array(
 					'name' => __('wt Contact information', 'text-domain'),
-					'base' => 'vc_informationbox',
+					'base' => 'wt_contact_info',
 					'description' => __('Adding your Contact information in a nice format', 'text-domain'), 
 					'show_settings_on_create' => true,   
 					'category' => __('wt elements', 'text-domain'),
