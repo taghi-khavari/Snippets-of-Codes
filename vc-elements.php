@@ -1,4 +1,334 @@
 <?php
+//***********************************************
+//***********************************************
+//***********************************************
+//***********************************************
+//***********************************************
+// First way: Adding element through class (recomended)
+//***********************************************
+//***********************************************
+//***********************************************
+//***********************************************
+//***********************************************
+
+
+// Before VC Init
+add_action( 'vc_before_init', 'vc_before_init_actions' );
+ 
+function vc_before_init_actions() {
+     
+    /*
+	Element Description: VC Info Box
+	*/
+	
+	// Element Class 
+	class vcInformationBox extends WPBakeryShortCode {
+		
+		// Element Init
+		function __construct() {
+			add_action( 'vc_before_mapping', array( $this, 'vc_informationbox_mapping' ) );
+			add_shortcode( 'wt_contact_info', array( $this, 'vc_informationbox_html' ) );
+		}
+		
+		// Element Mapping
+		public function vc_informationbox_mapping() {
+			
+			vc_map( 
+				array(
+					'name' => __('wt Contact information', 'text-domain'),
+					'base' => 'vc_informationbox',
+					'description' => __('Adding your Contact information in a nice format', 'text-domain'), 
+					'show_settings_on_create' => true,   
+					'category' => __('wt elements', 'text-domain'),
+					'icon' => 'wt_icon',            
+					'params' => array(  
+						array(
+							'type' => 'textfield',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'عنوان بخش', 'text-domain' ),
+							'param_name' => 'wt_title',
+							'value' => '',
+							'description' => __( 'ایجاد عنوان سفارشی', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'textfield',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'عنوان شبکه اجتماعی', 'text-domain' ),
+							'param_name' => 'wt_social_1',
+							'value' => '',
+							'description' => __( 'ایجاد عنوان شبکه اجتماعی', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'textfield',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'آدرس شبکه اجتماعی', 'text-domain' ),
+							'param_name' => 'wt_social_1_address',
+							'value' => '',
+							'description' => __( 'آدرس شبکه اجتماعی مورد نظر را وارد نمایید', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'attach_image',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'آیکن شبکه اجتماعی', 'text-domain' ),
+							'param_name' => 'wt_social_1_icon',
+							'value' => '',
+							'description' => __( 'آدرس شبکه اجتماعی مورد نظر را وارد نمایید', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'textfield',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'عنوان شبکه اجتماعی', 'text-domain' ),
+							'param_name' => 'wt_social_2',
+							'value' => '',
+							'description' => __( 'ایجاد عنوان شبکه اجتماعی', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'textfield',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'آدرس شبکه اجتماعی', 'text-domain' ),
+							'param_name' => 'wt_social_2_address',
+							'value' => '',
+							'description' => __( 'آدرس شبکه اجتماعی مورد نظر را وارد نمایید', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'attach_image',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'آیکن شبکه اجتماعی', 'text-domain' ),
+							'param_name' => 'wt_social_2_icon',
+							'value' => '',
+							'description' => __( 'آدرس شبکه اجتماعی مورد نظر را وارد نمایید', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'textfield',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'عنوان شبکه اجتماعی', 'text-domain' ),
+							'param_name' => 'wt_social_3',
+							'value' => '',
+							'description' => __( 'ایجاد عنوان شبکه اجتماعی', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'textfield',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'آدرس شبکه اجتماعی', 'text-domain' ),
+							'param_name' => 'wt_social_3_address',
+							'value' => '',
+							'description' => __( 'آدرس شبکه اجتماعی مورد نظر را وارد نمایید', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'attach_image',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'آیکن شبکه اجتماعی', 'text-domain' ),
+							'param_name' => 'wt_social_3_icon',
+							'value' => '',
+							'description' => __( 'آدرس شبکه اجتماعی مورد نظر را وارد نمایید', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'textfield',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'عنوان شبکه اجتماعی', 'text-domain' ),
+							'param_name' => 'wt_social_4',
+							'value' => '',
+							'description' => __( 'ایجاد عنوان شبکه اجتماعی', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'textfield',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'آدرس شبکه اجتماعی', 'text-domain' ),
+							'param_name' => 'wt_social_4_address',
+							'value' => '',
+							'description' => __( 'آدرس شبکه اجتماعی مورد نظر را وارد نمایید', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'attach_image',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'آیکن شبکه اجتماعی', 'text-domain' ),
+							'param_name' => 'wt_social_4_icon',
+							'value' => '',
+							'description' => __( 'آدرس شبکه اجتماعی مورد نظر را وارد نمایید', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'textfield',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'عنوان شبکه اجتماعی', 'text-domain' ),
+							'param_name' => 'wt_social_5',
+							'value' => '',
+							'description' => __( 'ایجاد عنوان شبکه اجتماعی', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'textfield',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'آدرس شبکه اجتماعی', 'text-domain' ),
+							'param_name' => 'wt_social_5_address',
+							'value' => '',
+							'description' => __( 'آدرس شبکه اجتماعی مورد نظر را وارد نمایید', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'attach_image',
+							'holder' => 'h3',
+							'class' => 'title-class',
+							'heading' => __( 'آیکن شبکه اجتماعی', 'text-domain' ),
+							'param_name' => 'wt_social_5_icon',
+							'value' => '',
+							'description' => __( 'آدرس شبکه اجتماعی مورد نظر را وارد نمایید', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 0,
+							'group' => 'محتوا',
+						),                    
+						array(
+							'type' => 'textarea_html',
+							'holder' => 'div',
+							'class' => 'text-class',
+							'heading' => __( 'محتوای متنی', 'text-domain' ),
+							'param_name' => 'content',
+							'value' => '',
+							'description' => __( 'محتوای متنی بالای آیکن ها', 'text-domain' ),
+							'admin_label' => false,
+							'weight' => 2,
+							'group' => 'محتوا',
+						),                      
+							
+					),
+				)
+			);                              
+			
+		} 
+		
+		
+		// Element HTML
+		public function vc_informationbox_html( $atts ) {
+			
+				// Params extraction
+			
+			$args = shortcode_atts(
+				array(
+					'wt_title'            => '',
+					'wt_social_1'         => '',
+					'wt_social_1_address' => '',
+					'wt_social_1_icon'    => '',
+					'wt_social_2'         => '',
+					'wt_social_2_address' => '',
+					'wt_social_2_icon'    => '',
+					'wt_social_3'         => '',
+					'wt_social_3_address' => '',
+					'wt_social_3_icon'    => '',
+					'wt_social_4'         => '',
+					'wt_social_4_address' => '',
+					'wt_social_4_icon'    => '',
+					'wt_social_5'         => '',
+					'wt_social_5_address' => '',
+					'wt_social_5_icon'    => '',
+					'content' => '',
+				), 
+				$atts
+			);
+			// Fill $html var with data
+			ob_start();
+			?>
+				<div class="wt_section">
+					<div class="wt_section_title"><?php echo $args['wt_title']; ?></div>
+					<div class="wt_section_content">
+						<?php echo $content; ?>
+					</div>
+					<div class="wt_socials">
+						<?php for($i = 1 ; $i < 6 ; $i++):
+								if($args['wt_social_' . $i]):?>
+									<div id="wt_socials_<?php echo $i; ?>">
+										<a class="wt_so_link" title="<?php echo $args['wt_social_'.$i] ?>">
+											<?php echo wp_get_attachment_image((int)$args['wt_social_' . $i . '_icon'] ) ?>
+										</a>
+									</div>
+						<?php endif;endfor;?>
+					</div>
+				</div>
+			<?php
+			$html = ob_get_clean();
+			return $html;
+			
+			
+		} 
+		
+	} // End Element Class
+	
+	// Element Class Init
+	new vcInformationBox(); 
+     
+}
+
+
+
+//***********************************************
+//***********************************************
+//***********************************************
+//***********************************************
+//***********************************************
+// Second Way: Using functions (not working with rest api)
+//***********************************************
+//***********************************************
+//***********************************************
+//***********************************************
+//***********************************************
+
+
 
 //adding custom element to visual composer
 
