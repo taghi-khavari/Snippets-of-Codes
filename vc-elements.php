@@ -255,7 +255,7 @@ function vc_before_init_actions() {
 		
 		
 		// Element HTML
-		public function vc_informationbox_html( $atts ) {
+		public function vc_informationbox_html( $atts , $content ) {
 			
 				// Params extraction
 			
