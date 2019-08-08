@@ -293,7 +293,7 @@ function vc_before_init_actions() {
 						<?php for($i = 1 ; $i < 6 ; $i++):
 								if($args['wt_social_' . $i]):?>
 									<div id="wt_socials_<?php echo $i; ?>">
-										<a class="wt_so_link" title="<?php echo $args['wt_social_'.$i] ?>">
+										<a href="<php echo $args['wt_social_' . $i . 'address'] ?>" class="wt_so_link" title="<?php echo $args['wt_social_'.$i] ?>">
 											<?php echo wp_get_attachment_image((int)$args['wt_social_' . $i . '_icon'] ) ?>
 										</a>
 									</div>
